@@ -15,9 +15,9 @@ public class Q6_1차원 {
 		
 		while(N != 0) {
 			for(int i = 0; i < lotto.length; i++) {
-				System.out.println("i 돌아감");
-				for(int j = 0; j < lotto.length-1; j++) {
-					if(lotto[j] == lotto[j+1]) {
+				lotto[i] = rd.nextInt(45)+1;
+				for(int j = 0; j < i; j++) {
+					if(lotto[i] == lotto[j]) {
 						i--;
 						break;
 					}
