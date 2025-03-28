@@ -1,6 +1,5 @@
 package Q.Q11;
 
-import java.nio.channels.ScatteringByteChannel;
 import java.util.Map;
 import java.util.Scanner;
 
@@ -9,6 +8,7 @@ public class Main {
 	public static void main(String[] args) {
 		Scanner sc = new Scanner(System.in);
 		int input;
+		
 		do {
 			System.out.println("===================================");
 			System.out.println("1. 계좌등록");
