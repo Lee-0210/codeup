@@ -158,7 +158,7 @@ public class Main {
               if(list.contains(entry.getKey().get(i))) lottoCount++;
               if(entry.getKey().get(i) == bonus) bonusCount++;
             }
-            entry.getKey().stream().sorted().forEach(e -> System.out.print(e + "    "));
+            entry.getKey().stream().sorted().forEach(e -> System.out.print(e + "   "));
             
             String winning = "";
             if(lottoCount == 6) winning = "(1등)";
