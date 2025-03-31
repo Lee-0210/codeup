@@ -127,20 +127,28 @@ public class Main {
 	
 	// 그 주에 토요일 메서드
 	public static String getSatDay() {
-		LocalDate sat = LocalDate.now().with(DayOfWeek.SATURDAY);
-		LocalDateTime satDateTime = sat.atTime(21, 0);
-		DateTimeFormatter dateFormatter = DateTimeFormatter.ofPattern("yyyy/MM/dd일 (E) HH:mm:ss", Locale.KOREA);
-		String formattedDate = satDateTime.format(dateFormatter);
+		LocalDate _now = LocalDate.now();
+		LocalDateTime now = _now.atTime(21, 0);
 		
-		return formattedDate;
+		LocalDateTime now2 = LocalDateTime.now();
+		LocalDate _nextSat = LocalDate.now().with(DayOfWeek.SATURDAY);
+		LocalDateTime nextSat = _nextSat.atTime(21, 0);
+		
+		DateTimeFormatter dateFormatter = DateTimeFormatter.ofPattern("yyyy/MM/dd일 (E) HH:mm:ss", Locale.KOREA);
+		
+		if(now2.isAfter(nextSat)) return nextSat.plusWeeks(1).format(dateFormatter);
+		
+		return now.with(DayOfWeek.SATURDAY).format(dateFormatter);
 	}
 	
 	// 1년뒤 메서드
 	public static String getOneYearAfter() {
+		String paramter = getSatDay();
+		DateTimeFormatter parameterFormatter = DateTimeFormatter.ofPattern("yyyy/MM/dd일 (E) HH:mm:ss", Locale.KOREA);
+		LocalDateTime parsedDateTime = LocalDateTime.parse(paramter, parameterFormatter);
+		
 		DateTimeFormatter dateFormatter = DateTimeFormatter.ofPattern("yyyy/MM/dd일 (E)", Locale.KOREA);
-		LocalDate sat = LocalDate.now().with(DayOfWeek.SATURDAY);
-		LocalDate oneYearAfter = sat.plusYears(1);
-		String formattedDate = oneYearAfter.format(dateFormatter);
+		String formattedDate = parsedDateTime.plusYears(1).format(dateFormatter);
 
 		return formattedDate;
 	}
