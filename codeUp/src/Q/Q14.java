@@ -71,8 +71,10 @@ public class Q14 {
 			
 			System.out.println("번호 \t 이름 \t 성적 \t 반");
 			list.stream()
-				.sorted(Comparator.comparing(Student::getNo))
-				.sorted(Comparator.comparing(Student::getScore).reversed())
+				.sorted(
+						Comparator.comparing(Student::getScore).reversed()
+						.thenComparing(Student::getNo)
+						)
 				.forEach(st -> System.out.println(st.getNo() + "\t" + st.getName() + "\t" + st.getScore() + "\t" + st.getMajor()));
 		} catch (Exception e) {
 			e.printStackTrace();
